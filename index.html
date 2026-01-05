@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KN + Logistic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>KN + Logistic</h1>
+    <nav>
+      <a href="#home">Головна</a>
+      <a href="#logistic">Логістика</a>
+      <a href="#shifts">Зміни</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>Ласкаво просимо</h2>
+      <p>KN + Logistic — сучасна система для управління змінами та логістикою.</p>
+    </section>
+
+    <section id="logistic">
+      <h2>Логістика</h2>
+      <ul id="cargoList"></ul>
+    </section>
+
+    <section id="shifts">
+      <h2>Зміни</h2>
+      <form id="shiftForm">
+        <input type="text" id="employee" placeholder="Співробітник" required>
+        <input type="date" id="date" required>
+        <input type="number" id="hours" placeholder="Години" min="1" max="24" required>
+        <button type="submit">Додати зміну</button>
+      </form>
+      <ul id="shiftList"></ul>
+    </section>
+
+    <section id="contacts">
+      <h2>Контакти</h2>
+      <p>Email: info@knlogistic.local</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 KN + Logistic</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
