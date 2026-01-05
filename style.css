@@ -1,75 +1,132 @@
+/* Загальний стиль */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   background: #f4f6f9;
   color: #333;
 }
 
+/* Верхній бар */
 .topbar {
-  background: #0f172a;
+  background: #003366; /* корпоративний синій Kuehne+Nagel */
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.topbar .logo {
+.logo {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
+  letter-spacing: 1px;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .nav-links a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #22d3ee;
+  color: #00aaff;
 }
 
+/* Бургер */
 .burger {
   display: none;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 24px;
 }
 
-section {
-  padding: 40px 20px;
+/* Hero секція */
+.hero {
+  background: linear-gradient(to right, #003366, #005599);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero .cta {
+  background: #00aaff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hero .cta:hover {
+  transform: scale(1.05);
+}
+
+/* Карточки */
+.card {
+  background: #fff;
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  animation: slideUp 1s ease;
 }
 
 form input, form button {
   display: block;
+  width: 100%;
   margin: 10px 0;
-  padding: 10px;
-  width: 250px;
-  border: 1px solid #ccc;
+  padding: 12px;
   border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 form button {
-  background: #0f172a;
+  background: #003366;
   color: #fff;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 form button:hover {
-  background: #22d3ee;
-  color: #000;
+  background: #00aaff;
 }
 
+/* Футер */
 footer {
-  background: #0f172a;
+  background: #003366;
   color: #fff;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
   margin-top: 40px;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideUp {
+  from {transform: translateY(50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
 }
 
 /* Адаптивність */
@@ -77,12 +134,12 @@ footer {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #0f172a;
+    background: #003366;
     position: absolute;
-    top: 60px;
+    top: 70px;
     right: 0;
     width: 200px;
-    padding: 10px;
+    padding: 15px;
   }
   .nav-links.show {
     display: flex;
