@@ -5,48 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KN + Logistic</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Іконки з Font Awesome -->
+  <script src="https://kit.fontawesome.com/a2e0e6f6d3.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Верхній бар -->
   <header class="topbar">
-    <h1>KN + Logistic</h1>
-    <nav>
-      <a href="#home">Головна</a>
-      <a href="#logistic">Логістика</a>
-      <a href="#shifts">Зміни</a>
-      <a href="#contacts">Контакти</a>
+    <div class="logo">KN + Logistic</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home"><i class="fas fa-home"></i> Головна</a>
+      <a href="#login"><i class="fas fa-sign-in-alt"></i> Вхід</a>
+      <a href="#register"><i class="fas fa-user-plus"></i> Реєстрація</a>
+      <a href="#help"><i class="fas fa-question-circle"></i> Допомога</a>
     </nav>
+    <!-- Бургер меню -->
+    <div class="burger" id="burger">
+      <i class="fas fa-bars"></i>
+    </div>
   </header>
 
+  <!-- Контент -->
   <main>
     <section id="home">
-      <h2>Ласкаво просимо</h2>
-      <p>KN + Logistic — сучасна система для управління змінами та логістикою.</p>
+      <h1>Ласкаво просимо до KN + Logistic</h1>
+      <p>Сучасна система управління логістикою та змінами.</p>
     </section>
 
-    <section id="logistic">
-      <h2>Логістика</h2>
-      <ul id="cargoList"></ul>
-    </section>
-
-    <section id="shifts">
-      <h2>Зміни</h2>
-      <form id="shiftForm">
-        <input type="text" id="employee" placeholder="Співробітник" required>
-        <input type="date" id="date" required>
-        <input type="number" id="hours" placeholder="Години" min="1" max="24" required>
-        <button type="submit">Додати зміну</button>
+    <section id="login">
+      <h2>Вхід</h2>
+      <form>
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Пароль">
+        <button type="submit">Увійти</button>
       </form>
-      <ul id="shiftList"></ul>
     </section>
 
-    <section id="contacts">
-      <h2>Контакти</h2>
-      <p>Email: info@knlogistic.local</p>
+    <section id="register">
+      <h2>Реєстрація</h2>
+      <form>
+        <input type="text" placeholder="Ім’я">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Пароль">
+        <button type="submit">Зареєструватися</button>
+      </form>
+    </section>
+
+    <section id="help">
+      <h2>Допомога</h2>
+      <p>Якщо виникли питання — звертайтесь на <b>support@knlogistic.local</b></p>
     </section>
   </main>
 
+  <!-- Футер -->
   <footer>
-    <p>© 2026 KN + Logistic</p>
+    <p>© 2026 KN + Logistic | Всі права захищені</p>
   </footer>
 
   <script src="script.js"></script>
