@@ -1,67 +1,228 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KN + Logistic</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Іконки Font Awesome -->
-  <script src="https://kit.fontawesome.com/a2e0e6f6d3.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuehne+Nagel Україна | Логістика та транспортування</title>
+    <style>
+        /* Основні стилі */
+        :root {
+            --primary: #003269; /* Офіційний синій колір Kuehne+Nagel */
+            --secondary: #ffffff;
+            --accent: #e20074; /* Додатковий акцентний колір, якщо потрібно */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--secondary);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        /* Бургер-меню */
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+        }
+
+        .burger div {
+            background: white;
+            height: 3px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,50,105,0.7), rgba(0,50,105,0.7)), url('https://via.placeholder.com/1920x1080/003269/ffffff?text=Логістика+Кюне+Нагель') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 100px;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+        }
+
+        /* Секції */
+        section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* Мобільна адаптація */
+        @media (max-width: 768px) {
+            .burger {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+
+            nav ul.active {
+                max-height: 500px;
+            }
+
+            nav ul li {
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Верхній бар -->
-  <header class="topbar">
-    <div class="logo">KN + Logistic</div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#home"><i class="fas fa-home"></i> Головна</a>
-      <a href="#login"><i class="fas fa-sign-in-alt"></i> Вхід</a>
-      <a href="#register"><i class="fas fa-user-plus"></i> Реєстрація</a>
-      <a href="#help"><i class="fas fa-question-circle"></i> Допомога</a>
-    </nav>
-    <!-- Бургер меню -->
-    <div class="burger" id="burger">
-      <i class="fas fa-bars"></i>
-    </div>
-  </header>
 
-  <!-- Головна секція -->
-  <main>
-    <section id="home" class="hero">
-      <h1>KN + Logistic</h1>
-      <p>Сучасні рішення для логістики та бізнесу.</p>
-      <button class="cta">Дізнатися більше</button>
+    <header>
+        <div class="top-bar">
+            <a href="#" class="logo">Kuehne+Nagel</a>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#">Головна</a></li>
+                    <li><a href="#">Послуги</a></li>
+                    <li><a href="#">Про нас</a></li>
+                    <li><a href="#">Контакти</a></li>
+                    <li><a href="#">Відстеження</a></li>
+                </ul>
+            </nav>
+            <div class="burger" id="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Лідер у глобальній логістиці</h1>
+        <p>Kuehne+Nagel — ваш надійний партнер у морських, авіаційних, автомобільних перевезеннях та контрактній логістиці.</p>
+        <a href="#" class="btn">Отримати пропозицію</a>
     </section>
 
-    <section id="login" class="card">
-      <h2>Вхід</h2>
-      <form>
-        <input type="text" placeholder="Email">
-        <input type="password" placeholder="Пароль">
-        <button type="submit">Увійти</button>
-      </form>
+    <section>
+        <h2>Наші послуги</h2>
+        <p>Ми пропонуємо повний спектр логістичних рішень для бізнесу будь-якого розміру...</p>
+        <!-- Додайте більше контенту за потреби -->
     </section>
 
-    <section id="register" class="card">
-      <h2>Реєстрація</h2>
-      <form>
-        <input type="text" placeholder="Ім’я">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Пароль">
-        <button type="submit">Зареєструватися</button>
-      </form>
-    </section>
+    <footer>
+        <p>&copy; 2026 Kuehne+Nagel Україна. Всі права захищено.</p>
+    </footer>
 
-    <section id="help" class="card">
-      <h2>Допомога</h2>
-      <p>Звертайтесь: <b>support@knlogistic.local</b></p>
-    </section>
-  </main>
+    <script>
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('menu');
 
-  <!-- Футер -->
-  <footer>
-    <p>© 2026 KN + Logistic | Стиль Kuehne+Nagel</p>
-  </footer>
-
-  <script src="script.js"></script>
+        burger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
