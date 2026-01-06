@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Контакти — KN Portal</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Kuehne+Nagel" width="160" height="32"></a>
+      <button id="burger" class="burger" aria-controls="menu" aria-expanded="false" aria-label="Відкрити меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav id="menu" class="menu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="auth.html">Вхід</a></li>
+      <li><a href="register.html">Реєстрація</a></li>
+      <li><a href="help.html">Допомога</a></li>
+      <li><a href="contact.html">Контакти</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <section class="container">
+      <h1>Контакти</h1>
+      <p class="subtitle">Зв'язатися з адміністрацією та технічною підтримкою.</p>
+
+      <form class="auth-form" action="https://formspree.io/f/xqzvyken" method="POST">
+        <label for="name">Ім'я</label>
+        <input id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="message">Повідомлення</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div class="form-actions">
+          <button class="btn-primary" type="submit">Надіслати</button>
+        </div>
+      </form>
+
+      <h3 style="margin-top:32px;">Контактна інформація</h3>
+      <ul>
+        <li>Адміністрація: +380 (44) 000-00-00</li>
+        <li>IT-підтримка: it-support@kn-internal.local</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>Про систему</h4>
+        <p>Внутрішній портал складу Kuehne+Nagel для операційної роботи персоналу.</p>
+      </div>
+      <div>
+        <h4>Безпека</h4>
+        <ul>
+          <li>Обмежений доступ</li>
+          <li>Внутрішня мережа</li>
+          <li>Контроль облікових записів</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Підтримка</h4>
+        <p>IT-відділ складу<br>Робочі години: 08:00–18:00</p>
+      </div>
+      <div>
+        <h4>Розробка</h4>
+        <p>Лапчинський В.М.<br>Внутрішній корпоративний проєкт</p>
+        <p class="dev-info">Розробник: Лапчинський В.М. • vadim.lapka@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Kuehne+Nagel Україна • Internal Use Only</div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
