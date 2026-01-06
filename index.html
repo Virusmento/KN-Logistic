@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuehne+Nagel Україна | Логістика та транспортування</title>
     <style>
-        /* Основні стилі */
         :root {
-            --primary: #003269; /* Офіційний синій колір Kuehne+Nagel */
+            --primary: #003269;
             --secondary: #ffffff;
-            --accent: #e20074; /* Додатковий акцентний колір, якщо потрібно */
+            --text: #333333;
+            --gray: #f5f5f5;
+            --border: #e0e0e0;
         }
 
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            color: #333;
+            color: var(--text);
             line-height: 1.6;
+            padding-top: 70px; /* Відступ під фіксований хедер */
         }
 
         header {
@@ -39,14 +41,10 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             text-decoration: none;
             color: white;
-        }
-
-        .logo span {
-            color: #fff;
         }
 
         nav ul {
@@ -71,9 +69,9 @@
             opacity: 0.8;
         }
 
-        /* Бургер-меню */
+        /* Бургер-меню — видно на всіх пристроях */
         .burger {
-            display: none;
+            display: flex;
             cursor: pointer;
             flex-direction: column;
             justify-content: space-around;
@@ -85,16 +83,76 @@
             background: white;
             height: 3px;
             width: 100%;
-            transition: all 0.3s;
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
-        /* Hero section */
+        .burger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Мобільне меню */
+        nav ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--primary);
+            flex-direction: column;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        nav ul.active {
+            max-height: 500px;
+        }
+
+        nav ul li {
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Десктопне меню приховане — тільки бургер */
+        @media (min-width: 769px) {
+            nav ul {
+                position: static;
+                width: auto;
+                flex-direction: row;
+                max-height: none;
+                background: transparent;
+            }
+
+            nav ul li {
+                margin-left: 30px;
+            }
+
+            nav ul li a {
+                padding: 0;
+                border-bottom: none;
+            }
+        }
+
+        /* Hero */
         .hero {
-            background: linear-gradient(rgba(0,50,105,0.7), rgba(0,50,105,0.7)), url('https://via.placeholder.com/1920x1080/003269/ffffff?text=Логістика+Кюне+Нагель') center/cover no-repeat;
+            background: linear-gradient(rgba(0,50,105,0.7), rgba(0,50,105,0.7)), url('https://via.placeholder.com/1920x800/003269/ffffff?text=Kuehne+Nagel+Логістика') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 150px 20px 100px;
-            margin-top: 70px;
+            padding: 120px 20px 100px;
         }
 
         .hero h1 {
@@ -111,11 +169,12 @@
         .btn {
             background: white;
             color: var(--primary);
-            padding: 12px 30px;
+            padding: 14px 32px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             text-decoration: none;
+            font-size: 16px;
             transition: background 0.3s;
         }
 
@@ -123,56 +182,92 @@
             background: #f0f0f0;
         }
 
-        /* Секції */
         section {
             padding: 80px 5%;
             max-width: 1400px;
             margin: 0 auto;
+            text-align: center;
         }
 
         h2 {
-            text-align: center;
             color: var(--primary);
-            margin-bottom: 40px;
             font-size: 36px;
+            margin-bottom: 40px;
         }
 
+        /* Професійний футер */
         footer {
             background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 30px;
+            color: var(--secondary);
+            padding: 50px 5% 30px;
+            margin-top: 80px;
         }
 
-        /* Мобільна адаптація */
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e20074;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+        }
+
+        .developer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .developer a {
+            color: #e20074;
+            text-decoration: none;
+        }
+
+        .developer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
-            .burger {
-                display: flex;
-            }
-
-            nav ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary);
-                flex-direction: column;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease;
-            }
-
-            nav ul.active {
-                max-height: 500px;
-            }
-
-            nav ul li {
-                margin: 20px 0;
-                text-align: center;
-            }
-
             .hero h1 {
                 font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
             }
         }
     </style>
@@ -187,8 +282,8 @@
                     <li><a href="#">Головна</a></li>
                     <li><a href="#">Послуги</a></li>
                     <li><a href="#">Про нас</a></li>
-                    <li><a href="#">Контакти</a></li>
                     <li><a href="#">Відстеження</a></li>
+                    <li><a href="#">Контакти</a></li>
                 </ul>
             </nav>
             <div class="burger" id="burger">
@@ -202,17 +297,49 @@
     <section class="hero">
         <h1>Лідер у глобальній логістиці</h1>
         <p>Kuehne+Nagel — ваш надійний партнер у морських, авіаційних, автомобільних перевезеннях та контрактній логістиці.</p>
-        <a href="#" class="btn">Отримати пропозицію</a>
+        <a href="#" class="btn">Отримати комерційну пропозицію</a>
     </section>
 
     <section>
         <h2>Наші послуги</h2>
-        <p>Ми пропонуємо повний спектр логістичних рішень для бізнесу будь-якого розміру...</p>
-        <!-- Додайте більше контенту за потреби -->
+        <p>Повний спектр логістичних рішень для вашого бізнесу: від міжнародних перевезень до складського зберігання та митного оформлення.</p>
     </section>
 
     <footer>
-        <p>&copy; 2026 Kuehne+Nagel Україна. Всі права захищено.</p>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Компанія</h3>
+                <ul>
+                    <li><a href="#">Про Kuehne+Nagel</a></li>
+                    <li><a href="#">Історія</a></li>
+                    <li><a href="#">Кар'єра</a></li>
+                    <li><a href="#">Новини</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Послуги</h3>
+                <ul>
+                    <li><a href="#">Морські перевезення</a></li>
+                    <li><a href="#">Авіаперевезення</a></li>
+                    <li><a href="#">Автомобільна логістика</a></li>
+                    <li><a href="#">Контрактна логістика</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Контакти</h3>
+                <ul>
+                    <li><a href="#">Україна</a></li>
+                    <li><a href="#">Відстеження вантажу</a></li>
+                    <li><a href="#">Техпідтримка</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="developer">
+            <p>Розробник: Лапчинський В.М.<br>
+            Зв'язок: <a href="mailto:vadim.lapka@gmail.com">vadim.lapka@gmail.com</a></p>
+            <p>&copy; 2026 Kuehne+Nagel Україна. Всі права захищено.</p>
+        </div>
     </footer>
 
     <script>
