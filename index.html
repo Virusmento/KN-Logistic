@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kuehne+Nagel Україна — Глобальна логістика №1</title>
+<title>Kuehne+Nagel | Внутрішній портал складу</title>
 
 <style>
 :root{
 --primary:#003269;
 --accent:#e20074;
---dark:#1c1c1c;
---light:#ffffff;
---glass:rgba(255,255,255,0.1);
---shadow:0 20px 40px rgba(0,0,0,.25);
+--bg:#f2f4f8;
+--dark:#1a1a1a;
+--muted:#6b7280;
+--white:#ffffff;
+--border:#e5e7eb;
+--shadow:0 10px 30px rgba(0,0,0,.12);
 }
 
 *{box-sizing:border-box;}
 body{
 margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Arial;
-background:#fff;
+font-family:system-ui,-apple-system,"Segoe UI",Arial;
+background:var(--bg);
 color:var(--dark);
-line-height:1.6;
 }
 
 /* ===== HEADER ===== */
@@ -29,7 +30,7 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:linear-gradient(90deg,#002b5c,#003269);
+background:var(--primary);
 z-index:1000;
 box-shadow:var(--shadow);
 }
@@ -37,22 +38,22 @@ box-shadow:var(--shadow);
 .header-inner{
 max-width:1400px;
 margin:auto;
-padding:18px 5%;
+padding:16px 5%;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 }
 
 .logo{
-font-size:26px;
-font-weight:800;
 color:#fff;
+font-weight:800;
+font-size:22px;
 }
 
 /* ===== BURGER (ALWAYS) ===== */
 .burger{
-width:34px;
-height:26px;
+width:30px;
+height:22px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
@@ -63,181 +64,152 @@ cursor:pointer;
 height:4px;
 background:#fff;
 border-radius:4px;
-transition:.4s;
+transition:.3s;
 }
 
 .burger.active span:nth-child(1){
-transform:rotate(45deg) translate(6px,6px);
+transform:rotate(45deg) translate(5px,5px);
 }
 .burger.active span:nth-child(2){
 opacity:0;
 }
 .burger.active span:nth-child(3){
-transform:rotate(-45deg) translate(7px,-7px);
+transform:rotate(-45deg) translate(5px,-5px);
 }
 
 /* ===== MENU ===== */
 nav{
 position:fixed;
-top:70px;
+top:64px;
 right:0;
 width:320px;
 height:100vh;
-background:rgba(0,50,105,.95);
-backdrop-filter:blur(10px);
+background:rgba(0,50,105,.97);
+backdrop-filter:blur(12px);
 transform:translateX(100%);
-transition:.5s;
+transition:.4s;
 padding:40px 30px;
 }
 
-nav.active{
-transform:translateX(0);
-}
+nav.active{transform:translateX(0);}
 
-nav ul{
-list-style:none;
-padding:0;
-}
-
-nav li{
-margin-bottom:25px;
-}
-
+nav ul{list-style:none;padding:0;}
+nav li{margin-bottom:22px;}
 nav a{
 color:#fff;
-font-size:18px;
+font-size:17px;
 font-weight:600;
 }
 
-/* ===== HERO ===== */
-.hero{
-margin-top:70px;
-min-height:100vh;
-background:
-linear-gradient(rgba(0,50,105,.85),rgba(0,50,105,.85)),
-url("https://via.placeholder.com/1920x1080/003269/ffffff?text=Global+Logistics") center/cover;
-display:flex;
-align-items:center;
-text-align:center;
-color:#fff;
-padding:0 20px;
-}
-
-.hero-content{
-max-width:900px;
-margin:auto;
-animation:fadeUp 1.2s ease;
-}
-
-.hero h1{
-font-size:54px;
-margin-bottom:20px;
-}
-
-.hero p{
-font-size:22px;
-margin-bottom:40px;
-}
-
-.btn{
-display:inline-block;
-padding:18px 40px;
-background:#fff;
-color:var(--primary);
-font-weight:800;
-border-radius:8px;
-transition:.4s;
-}
-
-.btn:hover{
-background:var(--accent);
-color:#fff;
-transform:translateY(-3px);
-}
-
-/* ===== SECTIONS ===== */
-section{
-padding:100px 5%;
+/* ===== MAIN ===== */
+main{
 max-width:1400px;
-margin:auto;
+margin:100px auto 0;
+padding:40px 5%;
+animation:fadeUp .8s ease;
 }
 
-h2{
-font-size:40px;
+h1{
+font-size:34px;
 color:var(--primary);
-margin-bottom:50px;
-text-align:center;
+margin-bottom:10px;
 }
 
-/* ===== ICON CARDS ===== */
-.cards{
+.subtitle{
+color:var(--muted);
+max-width:900px;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard{
+margin-top:40px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .card{
-background:#fff;
-border-radius:18px;
-padding:40px 30px;
+background:var(--white);
+border-radius:14px;
+padding:30px;
 box-shadow:var(--shadow);
-text-align:center;
-transition:.4s;
+transition:.25s;
 }
 
-.card:hover{
-transform:translateY(-10px);
+.card:hover{transform:translateY(-4px);}
+
+.card h3{
+margin-top:0;
+color:var(--primary);
+font-size:20px;
+}
+
+.card p{
+color:var(--muted);
+font-size:15px;
 }
 
 .icon{
-font-size:48px;
-margin-bottom:20px;
-color:var(--accent);
+font-size:32px;
+margin-bottom:10px;
 }
 
-/* ===== STATS ===== */
-.stats{
-background:linear-gradient(90deg,#003269,#002b5c);
+/* ===== SYSTEM NOTICE ===== */
+.notice{
+margin-top:60px;
+background:linear-gradient(135deg,#003269,#00214a);
 color:#fff;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:40px;
-text-align:center;
-}
-
-.stat{
-font-size:40px;
-font-weight:900;
-}
-
-.stat span{
-display:block;
-font-size:16px;
-font-weight:400;
-opacity:.85;
-}
-
-/* ===== AD ===== */
-.ad{
-background:linear-gradient(135deg,#e20074,#9b004f);
-color:#fff;
-text-align:center;
-border-radius:20px;
-padding:80px 40px;
+border-radius:18px;
+padding:50px;
 box-shadow:var(--shadow);
 }
 
+.notice h2{margin-top:0;font-size:26px;}
+
 /* ===== FOOTER ===== */
 footer{
-background:#001f3f;
+margin-top:80px;
+background:#0b1e35;
+color:#cbd5e1;
+}
+
+.footer-inner{
+max-width:1400px;
+margin:auto;
+padding:50px 5% 30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:40px;
+}
+
+footer h4{
 color:#fff;
-padding:70px 5% 30px;
+margin-bottom:16px;
+font-size:16px;
+border-bottom:2px solid var(--accent);
+display:inline-block;
+padding-bottom:6px;
+}
+
+footer p, footer li{
+font-size:14px;
+line-height:1.6;
+}
+
+footer ul{list-style:none;padding:0;}
+footer li{margin-bottom:8px;}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.15);
 text-align:center;
+padding:20px;
+font-size:13px;
+color:#94a3b8;
 }
 
 /* ===== ANIM ===== */
 @keyframes fadeUp{
-from{opacity:0;transform:translateY(40px);}
+from{opacity:0;transform:translateY(30px);}
 to{opacity:1;transform:none;}
 }
 </style>
@@ -247,7 +219,7 @@ to{opacity:1;transform:none;}
 
 <header>
   <div class="header-inner">
-    <div class="logo">Kuehne+Nagel</div>
+    <div class="logo">Kuehne+Nagel | Бровари Обїздна 68</div>
     <div class="burger" id="burger">
       <span></span><span></span><span></span>
     </div>
@@ -257,61 +229,85 @@ to{opacity:1;transform:none;}
 <nav id="menu">
   <ul>
     <li><a href="#">Головна</a></li>
-    <li><a href="#">Послуги</a></li>
-    <li><a href="#">Про компанію</a></li>
-    <li><a href="#">Рішення для бізнесу</a></li>
-    <li><a href="#">Відстеження</a></li>
+    <li><a href="#">Вхід</a></li>
+    <li><a href="#">Реєстрація</a></li>
+    <li><a href="#">Допомога</a></li>
     <li><a href="#">Контакти</a></li>
   </ul>
 </nav>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Глобальна логістика, якій довіряють світові бренди</h1>
-    <p>120+ років досвіду. 1000+ офісів. Мільйони доставок щороку.</p>
-    <a class="btn" href="#">Отримати комерційну пропозицію</a>
-  </div>
-</section>
+<main>
+  <h1>Внутрішній портал складу</h1>
+  <p class="subtitle">
+    Захищена корпоративна система для співробітників складу Kuehne+Nagel.
+    Доступ обмежений внутрішньою мережею компанії.
+  </p>
 
-<section>
-<h2>Наші ключові рішення</h2>
-<div class="cards">
-  <div class="card">
-    <div class="icon">🚢</div>
-    <h3>Морські перевезення</h3>
-    <p>Оптимальні маршрути, глобальна мережа портів.</p>
-  </div>
-  <div class="card">
-    <div class="icon">✈️</div>
-    <h3>Авіалогістика</h3>
-    <p>Максимальна швидкість та контроль поставок.</p>
-  </div>
-  <div class="card">
-    <div class="icon">🏭</div>
-    <h3>Контрактна логістика</h3>
-    <p>Склади, автоматизація, fulfillment.</p>
-  </div>
-</div>
-</section>
+  <div class="dashboard">
+    <div class="card">
+      <div class="icon">🔐</div>
+      <h3>Авторизація</h3>
+      <p>Безпечний вхід для співробітників, керівників змін та адміністраторів.</p>
+    </div>
 
-<section class="stats">
-  <div class="stat">120+<span>років досвіду</span></div>
-  <div class="stat">1000+<span>офісів у світі</span></div>
-  <div class="stat">80 000+<span>співробітників</span></div>
-  <div class="stat">№1<span>логістичний бренд</span></div>
-</section>
+    <div class="card">
+      <div class="icon">👤</div>
+      <h3>Облікові записи</h3>
+      <p>Реєстрація нових співробітників та керування доступом.</p>
+    </div>
 
-<section>
-<div class="ad">
-  <h2>Логістика, яка рухає ваш бізнес вперед</h2>
-  <p>Ми не просто перевозимо вантажі — ми створюємо конкурентну перевагу.</p>
-  <a class="btn" href="#">Почати співпрацю</a>
-</div>
-</section>
+    <div class="card">
+      <div class="icon">🆘</div>
+      <h3>Підтримка</h3>
+      <p>Інструкції, FAQ та зв’язок з IT-відділом.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📞</div>
+      <h3>Контакти</h3>
+      <p>Контактні дані адміністрації складу та технічної підтримки.</p>
+    </div>
+  </div>
+
+  <div class="notice">
+    <h2>Важлива інформація</h2>
+    <p>
+      Система призначена виключно для внутрішнього використання.
+      Усі дії користувачів можуть логуватись відповідно до політик безпеки компанії.
+    </p>
+  </div>
+</main>
 
 <footer>
-<p>© 2026 Kuehne+Nagel Україна<br>
-Розробник: Лапчинський В.М.</p>
+  <div class="footer-inner">
+    <div>
+      <h4>Про систему</h4>
+      <p>Внутрішній портал складу Kuehne+Nagel для операційної роботи персоналу.</p>
+    </div>
+
+    <div>
+      <h4>Безпека</h4>
+      <ul>
+        <li>Обмежений доступ</li>
+        <li>Внутрішня мережа</li>
+        <li>Контроль облікових записів</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Підтримка</h4>
+      <p>IT-відділ складу<br>Робочі години: 08:00–18:00</p>
+    </div>
+
+    <div>
+      <h4>Розробка</h4>
+      <p>Лапчинський В.М.<br>Внутрішній корпоративний проєкт</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Kuehne+Nagel Україна • Internal Use Only
+  </div>
 </footer>
 
 <script>
