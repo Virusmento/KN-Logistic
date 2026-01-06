@@ -30,10 +30,10 @@
       <h1>Вхід</h1>
       <p class="subtitle">Увійдіть у внутрішню систему за допомогою корпоративних облікових даних.</p>
 
-      <form class="auth-form" action="#" method="post">
+      <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
         <label for="role">Роль</label>
         <select id="role" name="role" required>
-          <option value="employee">Співробітник</option>
+          <option value="employee">Сотрудник</option>
           <option value="admin">Адміністратор</option>
         </select>
 
@@ -46,6 +46,7 @@
         <div class="form-actions">
           <button class="btn-primary" type="submit">Увійти</button>
         </div>
+        <div id="loginStatus" class="form-status"></div>
       </form>
     </section>
   </main>

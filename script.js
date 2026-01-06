@@ -39,44 +39,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 
-  // Close when a menu link is clicked
-  menu && menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
-
   // Login form handling
-  const authForm = document.getElementById('contactForm');
-  if(authForm && authForm.hasAttribute('id') && authForm.id === 'contactForm' && window.location.pathname.includes('auth.html')){
-    // This is auth form - override
-    const form = document.querySelector('form');
-    if(form && form.action !== 'https://formspree.io/f/xqzvyken'){
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const role = document.getElementById('role')?.value;
-        const username = document.getElementById('username')?.value || '';
-        const password = document.getElementById('password')?.value || '';
-        
-        // Simple demo validation
-        if((role === 'admin' && username === 'admin' && password === 'admin2026') ||
-           (role === 'employee' && username === 'user' && password === 'user2026')){
-          localStorage.setItem('userRole', role);
-          localStorage.setItem('username', username);
-          window.location.href = role === 'admin' ? 'admin.html' : 'dashboard.html';
-        } else {
-          alert('Неправильні облікові дані');
-        }
-      });
-    }
+  const loginForm = document.getElementById('loginForm');
+  if(loginForm){
+    loginForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      handleLogin(e);
+    });
   }
 
-  // Contact form handling (local demo)
-  const form = document.getElementById('contactForm');
+  // Contact form handling (formspree)
+  const contactForm = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
-  if(form && form.action === 'https://formspree.io/f/xqzvyken'){
-    form.addEventListener('submit', (e)=>{
+  if(contactForm && contactForm.action === 'https://formspree.io/f/xqzvyken'){
+    contactForm.addEventListener('submit', (e)=>{
       e.preventDefault();
       status.textContent = '';
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if(!name || !email || !message){
         status.textContent = 'Будь ласка, заповніть усі поля.';
@@ -91,8 +72,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
       status.textContent = 'Відправка...';
       setTimeout(()=>{
         status.textContent = 'Дякуємо! Ваше повідомлення надіслано.';
-        form.reset();
+        contactForm.reset();
       },900);
     });
+  }
+});
+
+function handleLogin(e){
+  e.preventDefault();
+  const form = document.getElementById('loginForm');
+  const role = document.getElementById('role').value;
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const status = document.getElementById('loginStatus');
+  
+  // Demo credentials
+  const validAdminUser = {username: 'admin', password: 'admin2026'};
+  const validEmployeeUser = {username: 'user', password: 'user2026'};
+  
+  const isValid = (role === 'admin' && username === validAdminUser.username && password === validAdminUser.password) ||
+                  (role === 'employee' && username === validEmployeeUser.username && password === validEmployeeUser.password);
+  
+  if(isValid){
+    localStorage.setItem('userRole', role);
+    localStorage.setItem('username', username);
+    window.location.href = role === 'admin' ? 'admin.html' : 'dashboard.html';
+  } else {
+    status.textContent = '❌ Неправильні облікові дані';
+    status.style.color = '#dc2626';
   }
 });
