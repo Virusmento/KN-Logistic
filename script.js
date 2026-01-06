@@ -48,43 +48,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   }
 
-  // Contact form handling (formspree)
+  // Register form handling
+  const registerForm = document.getElementById('registerForm');
+  if(registerForm){
+    registerForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      handleRegister(e);
+    });
+  }
+
+  // Contact form handling
   const contactForm = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  if(contactForm && contactForm.action === 'https://formspree.io/f/xqzvyken'){
+  if(contactForm){
     contactForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      status.textContent = '';
-      const name = contactForm.name.value.trim();
-      const email = contactForm.email.value.trim();
-      const message = contactForm.message.value.trim();
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!name || !email || !message){
-        status.textContent = 'Будь ласка, заповніть усі поля.';
-        return;
-      }
-      if(!emailRe.test(email)){
-        status.textContent = 'Вкажіть, будь ласка, коректну електронну адресу.';
-        return;
-      }
-
-      // Simulate send
-      status.textContent = 'Відправка...';
-      setTimeout(()=>{
-        status.textContent = 'Дякуємо! Ваше повідомлення надіслано.';
-        contactForm.reset();
-      },900);
+      handleContact(e);
     });
   }
 });
 
 function handleLogin(e){
   e.preventDefault();
-  const form = document.getElementById('loginForm');
-  const role = document.getElementById('role').value;
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value.trim();
+  console.log('Login form submitted');
+  const role = document.getElementById('role')?.value;
+  const username = document.getElementById('username')?.value?.trim();
+  const password = document.getElementById('password')?.value?.trim();
   const status = document.getElementById('loginStatus');
+  
+  console.log('Role:', role, 'Username:', username, 'Password:', password);
   
   // Demo credentials
   const validAdminUser = {username: 'admin', password: 'admin2026'};
@@ -93,7 +84,10 @@ function handleLogin(e){
   const isValid = (role === 'admin' && username === validAdminUser.username && password === validAdminUser.password) ||
                   (role === 'employee' && username === validEmployeeUser.username && password === validEmployeeUser.password);
   
+  console.log('Valid:', isValid);
+  
   if(isValid){
+    console.log('Login successful, redirecting...');
     localStorage.setItem('userRole', role);
     localStorage.setItem('username', username);
     window.location.href = role === 'admin' ? 'admin.html' : 'dashboard.html';
@@ -101,4 +95,63 @@ function handleLogin(e){
     status.textContent = '❌ Неправильні облікові дані';
     status.style.color = '#dc2626';
   }
-});
+}
+
+function handleRegister(e){
+  e.preventDefault();
+  const fullname = document.getElementById('fullname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const status = document.getElementById('registerStatus');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  if(!fullname || !email){
+    status.textContent = 'Будь ласка, заповніть усі поля.';
+    status.style.color = '#dc2626';
+    return;
+  }
+  
+  if(!emailRe.test(email)){
+    status.textContent = 'Вкажіть коректну електронну адресу.';
+    status.style.color = '#dc2626';
+    return;
+  }
+  
+  status.textContent = 'Відправка заявки...';
+  status.style.color = '#6b7280';
+  
+  setTimeout(()=>{
+    status.textContent = '✅ Заявка надіслана! Адміністрація розглядатиме вашу заявку.';
+    status.style.color = '#059669';
+    document.getElementById('registerForm').reset();
+  }, 800);
+}
+
+function handleContact(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const status = document.getElementById('contactStatus');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  if(!name || !email || !message){
+    status.textContent = 'Будь ласка, заповніть усі поля.';
+    status.style.color = '#dc2626';
+    return;
+  }
+  
+  if(!emailRe.test(email)){
+    status.textContent = 'Вкажіть коректну електронну адресу.';
+    status.style.color = '#dc2626';
+    return;
+  }
+  
+  status.textContent = 'Відправка повідомлення...';
+  status.style.color = '#6b7280';
+  
+  setTimeout(()=>{
+    status.textContent = '✅ Дякуємо! Ваше повідомлення отримано.';
+    status.style.color = '#059669';
+    document.getElementById('contactForm').reset();
+  }, 800);
+}

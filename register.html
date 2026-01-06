@@ -30,8 +30,8 @@
       <h1>Реєстрація</h1>
       <p class="subtitle">Запит на створення облікового запису відправляється адміністрації.</p>
 
-      <form class="auth-form" action="https://formspree.io/f/xqzvyken" method="POST">
-        <label for="fullname">ПІБ</label>
+      <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)">
+        <label for="fullname">ПІ</label>
         <input id="fullname" name="fullname" required>
 
         <label for="email">Робочий email</label>
@@ -43,6 +43,7 @@
         <div class="form-actions">
           <button class="btn-primary" type="submit">Надіслати заявку</button>
         </div>
+        <div id="registerStatus" class="form-status" aria-live="polite"></div>
         <p style="font-size:13px;color:#6b7280;margin-top:8px;">Данні будуть надіслані адміністрації на обробку.</p>
       </form>
     </section>

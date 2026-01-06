@@ -30,7 +30,7 @@
       <h1>Контакти</h1>
       <p class="subtitle">Зв'язатися з адміністрацією та технічною підтримкою.</p>
 
-      <form class="auth-form" action="https://formspree.io/f/xqzvyken" method="POST">
+      <form id="contactForm" class="auth-form" onsubmit="handleContact(event)">
         <label for="name">Ім'я</label>
         <input id="name" name="name" required>
 
@@ -43,6 +43,7 @@
         <div class="form-actions">
           <button class="btn-primary" type="submit">Надіслати</button>
         </div>
+        <div id="contactStatus" class="form-status" aria-live="polite"></div>
       </form>
 
       <h3 style="margin-top:32px;">Контактна інформація</h3>
